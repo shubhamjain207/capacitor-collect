@@ -15,6 +15,20 @@ buildscript {
     }
 }
 
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+         maven {
+            url "s3://deviceinsightssdk"
+            credentials(AwsCredentials) {
+                accessKey = project.findProperty("AWS_ACCESS_KEY") ?: ""
+                secretKey = project.findProperty("AWS_SECRET_KEY") ?: ""
+            }
+        }
+    }
+}
+
 apply plugin: 'com.android.library'
 
 android {
@@ -55,4 +69,10 @@ dependencies {
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
+    implementation "com.credeau:collectDeviceData:2.0.5@aar"
+    implementation "androidx.preference:preference:1.2.1"
+    implementation "androidx.work:work-runtime:2.9.0"
+    implementation("com.google.firebase:firebase-messaging:24.1.0")
+    implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
+
 }
