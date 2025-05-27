@@ -135,86 +135,86 @@ public class CollectDataPluginPlugin extends Plugin {
         }).start();
     }
 
-    @PluginMethod
-    public void fetchContactsData(PluginCall call) {
-        String userId = call.getString("user_id");
-        String clientName = call.getString("client_name");
-        String clientKey = call.getString("client_key");
-        String serverUrl = call.getString("server_url");
-        String dateFrom = call.getString("date_from");
+    // @PluginMethod
+    // public void fetchContactsData(PluginCall call) {
+    //     String userId = call.getString("user_id");
+    //     String clientName = call.getString("client_name");
+    //     String clientKey = call.getString("client_key");
+    //     String serverUrl = call.getString("server_url");
+    //     String dateFrom = call.getString("date_from");
 
-        if (dateFrom == null || dateFrom.isEmpty()) {
-            call.reject("dateFrom cannot be null or empty");
-            return;
-        }
+    //     if (dateFrom == null || dateFrom.isEmpty()) {
+    //         call.reject("dateFrom cannot be null or empty");
+    //         return;
+    //     }
 
-        Date dtFrom;
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+    //     Date dtFrom;
+    //     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
-        try {
-            dtFrom = formatter.parse(dateFrom);
-        } catch (ParseException e) {
-            Log.e("DataCollect", "Date parsing error: " + e.toString());
-            call.reject("Invalid date format. Expected YYYY-MM-DD.");
-            return;
-        }
+    //     try {
+    //         dtFrom = formatter.parse(dateFrom);
+    //     } catch (ParseException e) {
+    //         Log.e("DataCollect", "Date parsing error: " + e.toString());
+    //         call.reject("Invalid date format. Expected YYYY-MM-DD.");
+    //         return;
+    //     }
 
-        DeviceDataManager dataMgr = new DeviceDataManager(getContext(), clientName, clientKey, serverUrl);
-        dataMgr.setUsername(userId);
+    //     DeviceDataManager dataMgr = new DeviceDataManager(getContext(), clientName, clientKey, serverUrl);
+    //     dataMgr.setUsername(userId);
 
-        dataMgr.fetchContactsData(dtFrom, new DataDeviceDataOutputCallback() {
-            @Override
-            public void onSuccess(JSONObject data) {
-                JSObject ret = new JSObject();
-                ret.put("data", data.toString());
-                call.resolve(ret);
-            }
+    //     dataMgr.fetchContactsData(dtFrom, new DataDeviceDataOutputCallback() {
+    //         @Override
+    //         public void onSuccess(JSONObject data) {
+    //             JSObject ret = new JSObject();
+    //             ret.put("data", data.toString());
+    //             call.resolve(ret);
+    //         }
 
-            @Override
-            public void onFailure(String errorMsg) {
-                Log.e("CapacitorPlugin", errorMsg);
-                call.reject(errorMsg);
-            }
-        });
-    }
+    //         @Override
+    //         public void onFailure(String errorMsg) {
+    //             Log.e("CapacitorPlugin", errorMsg);
+    //             call.reject(errorMsg);
+    //         }
+    //     });
+    // }
 
-    @PluginMethod
-    public void fetchCallLogsData(PluginCall call) {
-        String userId = call.getString("user_id");
-        String clientName = call.getString("client_name");
-        String clientKey = call.getString("client_key");
-        String serverUrl = call.getString("server_url");
-        String dateFrom = call.getString("date_from");
+    // @PluginMethod
+    // public void fetchCallLogsData(PluginCall call) {
+    //     String userId = call.getString("user_id");
+    //     String clientName = call.getString("client_name");
+    //     String clientKey = call.getString("client_key");
+    //     String serverUrl = call.getString("server_url");
+    //     String dateFrom = call.getString("date_from");
 
-        Date dtFrom;
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    //     Date dtFrom;
+    //     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
-        try {
-            dtFrom = formatter.parse(dateFrom);
-        } catch (ParseException e) {
-            Log.e("DataCollect", e.toString());
-            call.reject("Invalid date format");
-            return;
-        }
+    //     try {
+    //         dtFrom = formatter.parse(dateFrom);
+    //     } catch (ParseException e) {
+    //         Log.e("DataCollect", e.toString());
+    //         call.reject("Invalid date format");
+    //         return;
+    //     }
 
-        DeviceDataManager dataMgr = new DeviceDataManager(getContext(), clientName, clientKey, serverUrl);
-        dataMgr.setUsername(userId);
+    //     DeviceDataManager dataMgr = new DeviceDataManager(getContext(), clientName, clientKey, serverUrl);
+    //     dataMgr.setUsername(userId);
 
-        dataMgr.fetchCallLogsData(dtFrom, new DataDeviceDataOutputCallback() {
-            @Override
-            public void onSuccess(JSONObject data) {
-                JSObject ret = new JSObject();
-                ret.put("data", data.toString());
-                call.resolve(ret);
-            }
+    //     dataMgr.fetchCallLogsData(dtFrom, new DataDeviceDataOutputCallback() {
+    //         @Override
+    //         public void onSuccess(JSONObject data) {
+    //             JSObject ret = new JSObject();
+    //             ret.put("data", data.toString());
+    //             call.resolve(ret);
+    //         }
 
-            @Override
-            public void onFailure(String errorMsg) {
-                Log.e("CapacitorPlugin", errorMsg);
-                call.reject(errorMsg);
-            }
-        });
-    }
+    //         @Override
+    //         public void onFailure(String errorMsg) {
+    //             Log.e("CapacitorPlugin", errorMsg);
+    //             call.reject(errorMsg);
+    //         }
+    //     });
+    // }
 
     @PluginMethod
     public void stopBackGroundSyncProcess(PluginCall call) {
@@ -234,57 +234,57 @@ public class CollectDataPluginPlugin extends Plugin {
         });
     }
 
-    @PluginMethod
-    public void syncContactsData(PluginCall call) {
-        String userId = call.getString("user_id");
-        String clientName = call.getString("client_name");
-        String clientKey = call.getString("client_key");
-        String serverUrl = call.getString("server_url");
+    // @PluginMethod
+    // public void syncContactsData(PluginCall call) {
+    //     String userId = call.getString("user_id");
+    //     String clientName = call.getString("client_name");
+    //     String clientKey = call.getString("client_key");
+    //     String serverUrl = call.getString("server_url");
 
-        DeviceDataManager dataMgr = new DeviceDataManager(getContext(), clientName, clientKey, serverUrl);
-        dataMgr.setUsername(userId);
+    //     DeviceDataManager dataMgr = new DeviceDataManager(getContext(), clientName, clientKey, serverUrl);
+    //     dataMgr.setUsername(userId);
 
-        dataMgr.syncContactsData(new DataDeviceDataCallback() {
-            @Override
-            public void onSuccess() {
-                JSObject ret = new JSObject();
-                ret.put("message", "Contacts Synced");
-                call.resolve(ret);
-            }
+    //     dataMgr.syncContactsData(new DataDeviceDataCallback() {
+    //         @Override
+    //         public void onSuccess() {
+    //             JSObject ret = new JSObject();
+    //             ret.put("message", "Contacts Synced");
+    //             call.resolve(ret);
+    //         }
 
-            @Override
-            public void onFailure(String errorMsg) {
-                Log.e("CapacitorPlugin", errorMsg);
-                call.reject(errorMsg);
-            }
-        });
-    }
+    //         @Override
+    //         public void onFailure(String errorMsg) {
+    //             Log.e("CapacitorPlugin", errorMsg);
+    //             call.reject(errorMsg);
+    //         }
+    //     });
+    // }
 
-    @PluginMethod
-    public void syncCallLogsData(PluginCall call) {
-        String userId = call.getString("user_id");
-        String clientName = call.getString("client_name");
-        String clientKey = call.getString("client_key");
-        String serverUrl = call.getString("server_url");
+    // @PluginMethod
+    // public void syncCallLogsData(PluginCall call) {
+    //     String userId = call.getString("user_id");
+    //     String clientName = call.getString("client_name");
+    //     String clientKey = call.getString("client_key");
+    //     String serverUrl = call.getString("server_url");
 
-        DeviceDataManager dataMgr = new DeviceDataManager(getContext(), clientName, clientKey, serverUrl);
-        dataMgr.setUsername(userId);
+    //     DeviceDataManager dataMgr = new DeviceDataManager(getContext(), clientName, clientKey, serverUrl);
+    //     dataMgr.setUsername(userId);
 
-        dataMgr.syncCallLogsData(new DataDeviceDataCallback() {
-            @Override
-            public void onSuccess() {
-                JSObject ret = new JSObject();
-                ret.put("message", "Call Logs Synced");
-                call.resolve(ret);
-            }
+    //     dataMgr.syncCallLogsData(new DataDeviceDataCallback() {
+    //         @Override
+    //         public void onSuccess() {
+    //             JSObject ret = new JSObject();
+    //             ret.put("message", "Call Logs Synced");
+    //             call.resolve(ret);
+    //         }
 
-            @Override
-            public void onFailure(String errorMsg) {
-                Log.e("CapacitorPlugin", errorMsg);
-                call.reject(errorMsg);
-            }
-        });
-    }
+    //         @Override
+    //         public void onFailure(String errorMsg) {
+    //             Log.e("CapacitorPlugin", errorMsg);
+    //             call.reject(errorMsg);
+    //         }
+    //     });
+    // }
 
     @PluginMethod
     public void syncSMSData(PluginCall call) {
@@ -455,6 +455,38 @@ public class CollectDataPluginPlugin extends Plugin {
 
         JSObject ret = new JSObject();
         ret.put("message", "Syncs disabled successfully");
+        call.resolve(ret);
+    }
+
+    @PluginMethod
+    public void setDeviceMatchParams(PluginCall call) {
+        
+        String fullname = call.getString("fullname");
+        String phone = call.getString("phone");
+        String email = call.getString("email");
+      
+
+        if (fullname == null || phone == null || email == null) {
+            call.reject("parameters are required");
+            return;
+        }
+
+        // List<String> disableSyncsList = new ArrayList<>();
+        // for (int i = 0; i < disableSyncsArray.length(); i++) {
+        //     try {
+        //         disableSyncsList.add(disableSyncsArray.getString(i));
+        //     } catch (JSONException e) {
+        //         call.reject("Invalid disable_syncs array format");
+        //         return;
+        //     }
+        // }
+
+       // String[] stringArray = disableSyncsList.toArray(new String[0]);
+        DeviceDataManager dataMgr = new DeviceDataManager(getContext(), "", "", "");
+        dataMgr.setDeviceMatchParams(fullname, phone, email);
+
+        JSObject ret = new JSObject();
+        ret.put("message", "match params set successfully");
         call.resolve(ret);
     }
 

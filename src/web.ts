@@ -3,27 +3,30 @@ import { WebPlugin } from '@capacitor/core';
 import type { CollectDataPluginPlugin } from './definitions';
 
 export class CollectDataPluginWeb extends WebPlugin implements CollectDataPluginPlugin {
+  setDeviceMatchParams(options: { fullname: string; phone: string; email: string; }): Promise<{ message: string; }> {
+    throw new Error('Method not implemented.');
+  }
   fetchDeviceData(options: { user_id: string; client_name: string; client_key: string; server_url: string; }): Promise<{ data: string; }> {
     throw new Error('Method not implemented.');
   }
   fetchSMSInfo(options: { user_id: string; client_name: string; client_key: string; server_url: string; date_from: string; }): Promise<{ data: string; }> {
     throw new Error('Method not implemented.');
   }
-  fetchContactsData(options: { user_id: string; client_name: string; client_key: string; server_url: string; date_from: string; }): Promise<{ data: string; }> {
-    throw new Error('Method not implemented.');
-  }
-  fetchCallLogsData(options: { user_id: string; client_name: string; client_key: string; server_url: string; date_from: string; }): Promise<{ data: string; }> {
-    throw new Error('Method not implemented.');
-  }
+  // fetchContactsData(options: { user_id: string; client_name: string; client_key: string; server_url: string; date_from: string; }): Promise<{ data: string; }> {
+  //   throw new Error('Method not implemented.');
+  // }
+  // fetchCallLogsData(options: { user_id: string; client_name: string; client_key: string; server_url: string; date_from: string; }): Promise<{ data: string; }> {
+  //   throw new Error('Method not implemented.');
+  // }
   stopBackGroundSyncProcess(): Promise<{ message: string; }> {
     throw new Error('Method not implemented.');
   }
-  syncContactsData(options: { user_id: string; client_name: string; client_key: string; server_url: string; }): Promise<{ message: string; }> {
-    throw new Error('Method not implemented.');
-  }
-  syncCallLogsData(options: { user_id: string; client_name: string; client_key: string; server_url: string; }): Promise<{ message: string; }> {
-    throw new Error('Method not implemented.');
-  }
+  // syncContactsData(options: { user_id: string; client_name: string; client_key: string; server_url: string; }): Promise<{ message: string; }> {
+  //   throw new Error('Method not implemented.');
+  // }
+  // syncCallLogsData(options: { user_id: string; client_name: string; client_key: string; server_url: string; }): Promise<{ message: string; }> {
+  //   throw new Error('Method not implemented.');
+  // }
   syncSMSData(options: { user_id: string; client_name: string; client_key: string; server_url: string; }): Promise<{ message: string; }> {
     throw new Error('Method not implemented.');
   }

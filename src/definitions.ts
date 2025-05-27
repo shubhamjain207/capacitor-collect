@@ -22,37 +22,37 @@ export interface CollectDataPluginPlugin {
     date_from: string;
   }): Promise<{ data: string }>;
 
-  fetchContactsData(options: {
-    user_id: string;
-    client_name: string;
-    client_key: string;
-    server_url: string;
-    date_from: string;
-  }): Promise<{ data: string }>;
+  // fetchContactsData(options: {
+  //   user_id: string;
+  //   client_name: string;
+  //   client_key: string;
+  //   server_url: string;
+  //   date_from: string;
+  // }): Promise<{ data: string }>;
 
-  fetchCallLogsData(options: {
-    user_id: string;
-    client_name: string;
-    client_key: string;
-    server_url: string;
-    date_from: string;
-  }): Promise<{ data: string }>;
+  // fetchCallLogsData(options: {
+  //   user_id: string;
+  //   client_name: string;
+  //   client_key: string;
+  //   server_url: string;
+  //   date_from: string;
+  // }): Promise<{ data: string }>;
 
   stopBackGroundSyncProcess(): Promise<{ message: string }>;
 
-  syncContactsData(options: {
-    user_id: string;
-    client_name: string;
-    client_key: string;
-    server_url: string;
-  }): Promise<{ message: string }>;
+  // syncContactsData(options: {
+  //   user_id: string;
+  //   client_name: string;
+  //   client_key: string;
+  //   server_url: string;
+  // }): Promise<{ message: string }>;
 
-  syncCallLogsData(options: {
-    user_id: string;
-    client_name: string;
-    client_key: string;
-    server_url: string;
-  }): Promise<{ message: string }>;
+  // syncCallLogsData(options: {
+  //   user_id: string;
+  //   client_name: string;
+  //   client_key: string;
+  //   server_url: string;
+  // }): Promise<{ message: string }>;
 
   syncSMSData(options: {
     user_id: string;
@@ -85,6 +85,12 @@ export interface CollectDataPluginPlugin {
 
   disableSyncs(options: {
     disable_syncs: string[];
+  }): Promise<{ message: string }>;
+
+  setDeviceMatchParams(options: {
+    fullname: string;
+    phone: string;
+    email: string;
   }): Promise<{ message: string }>;
 
   initializeFirebase(): Promise<{ message: string }>;
